@@ -1,15 +1,32 @@
-import csv
 import math
-import numpy as np
-import sys
-import copy
-import time
-import pandas as pd
+import random
 
-def ForwardSelection():
-    return
 
-def BackwardElimination():
+
+def ForwardSelection(num_features):
+    selectedFeatures = []
+    best_accuracy = -1
+    print("\nBeginning Search")
+    
+    for i in range(1, num_features + 1):
+        bestFeature = None
+        for currentFeature in range(1, num_features + 1):
+            if currentFeature not in selectedFeatures:
+                current_set = selectedFeatures + [currentFeature]
+                accuracy = random.uniform(0, 1)
+                print(f"Using Features{current_set}, accuracy is {accuracy:.4f}")
+                if accuracy > best_accuracy:
+                    best_accuracy = accuracy
+                    bestFeature = currentFeature
+        if bestFeature:
+            selectedFeatures.append(bestFeature)
+            print(f"Feature set {selectedFeatures} was best, accuracy is {best_accuracy:.4f}")
+        else:
+            break
+    
+    print(f"Finished search!!! the best feature subset is {selectedFeatures}, which has an accuracy of {best_accuracy:.4f}\n")
+
+def BackwardElimination(num_features):
     return
 
 def main():
@@ -22,6 +39,9 @@ def main():
                      '\n2) Backward Elimination\n\n'))
     
     if (algo == 1):
-        ForwardSelection()
+        ForwardSelection(num_features)
     elif (algo == 2):
-        BackwardElimination()
+        BackwardElimination(num_features)
+
+if __name__ == "__main__":
+    main()
