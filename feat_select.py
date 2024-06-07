@@ -6,13 +6,22 @@ import copy
 import time
 import pandas as pd
 
+def ForwardSelection():
+    return
+
+def BackwardElimination():
+    return
 
 def main():
-    print('Welcom to Group 61\'s Feature Selection Algorithm.')
+    print('Welcome to Group 61\'s Feature Selection Algorithm.')
 
-    #fn = #file name
-    #fn = open(f, 'r') #opens file
+    num_features = int(input('Please enter total number of features: '))
 
     algo = int(input('Type the number of algorithm you want to run. \n'
                      '\n1) Forward Selection'
                      '\n2) Backward Elimination\n\n'))
+    
+    if (algo == 1):
+        ForwardSelection()
+    elif (algo == 2):
+        BackwardElimination()
