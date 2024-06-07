@@ -1,5 +1,7 @@
 import math
 import random
+import numpy as np
+
 
 def ForwardSelection(num_features):
     selectedFeatures = []
