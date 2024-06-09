@@ -66,7 +66,7 @@ def nearest_neighbor(train_data, test_instance):
 
 # Calculate and print the accuracy
 #accuracy = validator.validate(feature_subset)
-print(f"Accuracy of the classifier with the given feature subset: {accuracy:.2f}")
+
 import math
 import random
 
@@ -94,7 +94,7 @@ def ForwardSelection(num_features, validator):
     
     print(f"Finished search!!! the best feature subset is {selectedFeatures}, which has an accuracy of {best_accuracy:.4f}\n")
 
-def BackwardElimination(num_features):
+def BackwardElimination(num_features, validator):
     selectedFeatures = list(range(1, num_features + 1))
     best_accuracy = -1
     print("\nBeginning Search")
@@ -107,7 +107,7 @@ def BackwardElimination(num_features):
         bestFeature = None
         for currentFeature in selectedFeatures:
             current_set = [feature for feature in selectedFeatures if feature != currentFeature]
-            accuracy = random.uniform(0, 1)
+            accuracy = validator.validate(current_set)
             print(f"Using Features{current_set}, accuracy is {accuracy:.4f}")
             if accuracy > best_accuracy:
                 best_accuracy = accuracy
@@ -133,7 +133,8 @@ def main():
     if (algo == 1):
         ForwardSelection(num_features, validator)
     elif (algo == 2):
-        BackwardElimination(num_features)
+        BackwardElimination(num_features, validator)
+    print(validator.validate([3, 5, 7]))
 
 if __name__ == "__main__":
     main()
