@@ -107,7 +107,7 @@ def backward_elimination(num_features, dataset, k=1) -> float:
 def main():
     print("Welcome to Group 61's Feature Selection Algorithm.")
 
-    data = np.loadtxt("./content/small-test-dataset-1.txt")
+    data = np.loadtxt("./content/custom-small-test-dataset.txt")
     columns_to_normalize = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     scaler = MinMaxScaler()
     data[:, columns_to_normalize] = scaler.fit_transform(data[:, columns_to_normalize])
